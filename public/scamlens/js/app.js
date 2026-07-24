@@ -110,7 +110,10 @@
             <p class="text-xs" style="color:var(--muted)">ScamLens AI provides AI-assisted analysis and should be used as a decision support tool. It does not replace professional cybersecurity investigation.</p>
           </div>
         </div>
-        <div class="text-center text-xs py-4 border-t" style="color:var(--muted); border-color: var(--border)">© ${new Date().getFullYear()} ScamLens AI</div>
+        <div class="text-center text-xs py-4 border-t" style="color:var(--muted); border-color: var(--border)">
+          <div>© ${new Date().getFullYear()} ScamLens AI</div>
+          <div class="mt-1">Developed by Zain Abuzaid</div>
+        </div>
       </footer>
     `;
   }
