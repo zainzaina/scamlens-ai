@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ScamLens AI — Stop Scams Before They Stop You</title>
+  <meta name="description" content="Analyze suspicious messages, emails, screenshots and links using Artificial Intelligence. Detect phishing, fraud and social engineering." />
+  <meta property="og:title" content="ScamLens AI — AI Scam & Phishing Detector" />
+  <meta property="og:description" content="AI-assisted risk analysis for suspicious messages, emails, screenshots and links." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#3B82F6" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Crect width=%2224%22 height=%2224%22 rx=%226%22 fill=%22%233B82F6%22/%3E%3Cpath d=%22M12 4l7 3v5c0 4-3 7-7 7s-7-3-7-7V7l7-3z%22 fill=%22white%22/%3E%3C/svg%3E" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="min-h-screen">
+  <div id="site-header"></div>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- HERO -->
+    <section class="relative pt-16 pb-24 text-center overflow-hidden">
+      <div class="hero-glow"></div>
+      <div class="relative">
+        <div class="inline-flex items-center gap-2 chip chip-info mb-6">
+          <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+          Powered by Groq AI
+        </div>
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.05]">
+          Stop Scams<br/><span class="grad-text">Before They Stop You.</span>
+        </h1>
+        <p class="mt-6 max-w-2xl mx-auto text-base sm:text-lg" style="color:var(--muted)">
+          Analyze suspicious messages, emails, screenshots and links using Artificial Intelligence. Get an instant risk score, red flags and educational insights.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <a href="analyzer.html" class="btn btn-primary">Analyze Now
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M4.5 12a.75.75 0 0 1 .75-.75h11.69l-3.72-3.72a.75.75 0 1 1 1.06-1.06l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 1 1-1.06-1.06l3.72-3.72H5.25A.75.75 0 0 1 4.5 12z"/></svg>
+          </a>
+          <a href="analyzer.html?demo=1" class="btn btn-ghost">Try Demo</a>
+        </div>
+
+        <!-- Stats -->
+        <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+          <div class="glass rounded-2xl p-6">
+            <div class="text-3xl font-bold grad-text">50,000+</div>
+            <div class="text-sm mt-1" style="color:var(--muted)">Scams analyzed</div>
+          </div>
+          <div class="glass rounded-2xl p-6">
+            <div class="text-3xl font-bold grad-text">&lt; 3s</div>
+            <div class="text-sm mt-1" style="color:var(--muted)">Average detection time</div>
+          </div>
+          <div class="glass rounded-2xl p-6">
+            <div class="text-3xl font-bold grad-text">10+</div>
+            <div class="text-sm mt-1" style="color:var(--muted)">Supported scam types</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature cards -->
+    <section class="pb-16">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl sm:text-4xl font-bold">Built like a modern SOC</h2>
+        <p class="mt-2" style="color:var(--muted)">Not just detection — education. Understand exactly why something is dangerous.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card p-6">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:linear-gradient(135deg,#3B82F6,#8B5CF6)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-5 h-5"><path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5z"/></svg>
+          </div>
+          <h3 class="font-bold text-lg mb-1">Scam DNA™</h3>
+          <p class="text-sm" style="color:var(--muted)">Every dangerous behavior detected — separately explained. Impersonation, urgency, credential requests, spoofing and more.</p>
+        </div>
+        <div class="card p-6">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:linear-gradient(135deg,#F59E0B,#EF4444)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-5 h-5"><path d="M11.983 1.907a.75.75 0 0 0-1.292-.657l-8.5 9.5A.75.75 0 0 0 2.75 12h6.572l-1.305 6.093a.75.75 0 0 0 1.292.657l8.5-9.5A.75.75 0 0 0 17.25 8h-6.572l1.305-6.093Z"/></svg>
+          </div>
+          <h3 class="font-bold text-lg mb-1">Future Impact</h3>
+          <p class="text-sm" style="color:var(--muted)">See what may happen if you fall for the scam — credential theft, financial loss, device compromise, identity theft.</p>
+        </div>
+        <div class="card p-6">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:linear-gradient(135deg,#22C55E,#06B6D4)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-5 h-5"><path d="M12 6.75a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5a.75.75 0 0 1 .75-.75z"/></svg>
+          </div>
+          <h3 class="font-bold text-lg mb-1">Victim Simulator</h3>
+          <p class="text-sm" style="color:var(--muted)">Interactive timeline shows minute-by-minute what a real victim would experience — for education, not fear.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="mb-24">
+      <div class="glass rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
+        <div class="hero-glow"></div>
+        <div class="relative">
+          <h2 class="text-3xl md:text-4xl font-bold">Analyze your first suspicious message</h2>
+          <p class="mt-2" style="color:var(--muted)">Free, browser-only, no account required. AI powered by Groq — no key needed.</p>
+          <a href="analyzer.html" class="btn btn-primary mt-6">Get started</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>

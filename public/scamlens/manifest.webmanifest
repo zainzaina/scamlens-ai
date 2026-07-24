@@ -1,0 +1,13 @@
+{
+  "name": "ScamLens AI",
+  "short_name": "ScamLens",
+  "description": "AI-assisted scam & phishing risk analysis",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#070B14",
+  "theme_color": "#3B82F6",
+  "icons": [
+    { "src": "data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 192 192%22><rect width=%22192%22 height=%22192%22 rx=%2244%22 fill=%22%233B82F6%22/><path fill=%22white%22 d=%22M96 32l56 22v46c0 37-25 67-56 68-31-1-56-31-56-68V54l56-22z%22/></svg>", "sizes": "192x192", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
