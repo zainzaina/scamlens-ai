@@ -75,8 +75,8 @@ Simply paste a suspicious message, upload a screenshot, or submit a link, and Sc
 GitHub:
 https://github.com/zainzaina
 
-LinkedIn:
-YOUR_LINK
+
+
 
 ---
 
