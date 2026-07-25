@@ -1,29 +1,83 @@
-# Welcome to your Lovable project
+<div align="center">
 
-This project was built with [Lovable](https://lovable.dev).
+# 🛡️ ScamLens AI
 
-## Build with Lovable
+### AI-Powered Scam Detection Assistant
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Detect phishing messages, suspicious links, and online scams in seconds using Artificial Intelligence.
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+<img src="https://media.giphy.com/media/LmNwrBhejkK9EFP504/giphy.gif" width="700"/>
 
-## Development
+[🌐 Live Demo]
+(https://scamlens-ai.vercel.app/scamlens/index.html)
+ [🎥 Demo Video]
+(https://youtu.be/6ACVad4DoNM)
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+</div>
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+---
 
-## Built with
+## 🚀 About
 
-- TanStack Start
-- TypeScript
+ScamLens AI is an AI-powered web application designed to help users identify scams before they become victims.
+
+Simply paste a suspicious message, upload a screenshot, or submit a link, and ScamLens AI provides:
+
+- 🔍 Scam Detection
+- 🤖 AI Risk Analysis
+- 📊 Risk Score
+- 📝 Clear Explanation
+- 💡 Safety Recommendations
+- 📄 PDF Report Export
+- 📱 Responsive Web App
+
+---
+
+## ✨ Features
+
+- Detect phishing emails
+- Analyze suspicious SMS messages
+- Scan suspicious URLs
+- OCR for screenshots
+- AI-generated explanations
+- Modern responsive UI
+- Fast cloud deployment
+
+---
+
+## 🛠 Tech Stack
+
 - React
+- TypeScript
 - Tailwind CSS
+- Vercel
+- Groq API
+
+---
+
+## 🌍 Live Link
+
+👉 https://scamlens-ai.vercel.app/scamlens/index.html
+
+---
+
+## 🎬  video 
+
+👉 https://youtu.be/6ACVad4DoNM
+
+
+---
+
+## 👨‍💻 Author
+
+**Zain Abuzaid**
+
+GitHub:
+https://github.com/zainzaina
+
+LinkedIn:
+YOUR_LINK
+
+---
+
+⭐ If you like this project, don't forget to star the repository!
