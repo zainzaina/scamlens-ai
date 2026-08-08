@@ -111,8 +111,9 @@
           </div>
         </div>
         <div class="text-center text-xs py-4 border-t" style="color:var(--muted); border-color: var(--border)">
-          <div>© ${new Date().getFullYear()} ScamLens AI</div>
-          <div class="mt-1">Developed by Zain Abuzaid</div>
+          <div>© 2026 Zain Nofan Abuzaid. All rights reserved.</div>
+          <div class="mt-1">ScamLens AI · Developed by Zain Nofan Abuzaid · زين نوفان ابوزيد</div>
+          <div class="mt-1">This project should not be presented as the work of another individual or organization without appropriate attribution.</div>
         </div>
       </footer>
     `;
