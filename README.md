@@ -78,7 +78,13 @@ https://github.com/zainzaina
 
 
 
+# ScamLens AI by Zain Abuzaid
 
+ScamLens AI is a cybersecurity research and analysis project
+focused on detecting phishing and social engineering indicators
+in suspicious digital content.
+
+Created by Zain Abuzaid.
 ---
 
 ⭐ If you like this project, don't forget to star the repository!
