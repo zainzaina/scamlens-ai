@@ -44,7 +44,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <a href="index.html" class="flex items-center gap-2">
             <img src="logo.svg" alt="ScamLens AI" class="w-9 h-9 object-contain" />
-            <span class="font-bold tracking-tight text-lg">ScamLens <span class="grad-text">AI</span></span>
+            <span><span class="font-bold tracking-tight text-lg">ScamLens <span class="grad-text">AI</span></span><span class="block console-label" style="font-size:.55rem;letter-spacing:.12em">Threat intelligence</span></span>
           </a>
           <nav class="hidden md:flex items-center gap-1">
             ${NAV.map(n => `<a href="${n.href}" class="px-3 py-2 rounded-lg text-sm font-medium ${cur===n.href?'text-white bg-white/5':'text-[color:var(--muted)] hover:text-white hover:bg-white/5'}">${n.label}</a>`).join('')}
@@ -78,7 +78,7 @@
     const el = document.getElementById('site-footer');
     if (!el) return;
     el.innerHTML = `
-      <footer class="mt-24 border-t" style="border-color: var(--border)">
+      <footer class="mt-24 border-t" style="border-color: var(--border); background: color-mix(in oklab, var(--surface) 75%, transparent)">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-4 gap-8">
           <div>
             <div class="flex items-center gap-2 mb-3">

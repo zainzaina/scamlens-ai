@@ -142,23 +142,54 @@
   }
   function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
+  function explanationFindings(explanation) {
+    const findings = String(explanation || '').match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [];
+    return findings.map(item => item.trim()).filter(Boolean);
+  }
+
+  function dnaIndicators(r) {
+    const indicators = [];
+    (r.manipulation_techniques || []).forEach(item => indicators.push({ label: item, source: 'Technique' }));
+    (r.red_flags || []).forEach(item => indicators.push({ label: item, source: 'Red flag' }));
+    (r.scam_dna || []).forEach(item => indicators.push({ label: item, source: 'Behavior' }));
+    return indicators.slice(0, 12);
+  }
+
+  function attackPath(r) {
+    const techniques = (r.manipulation_techniques || []).filter(Boolean);
+    return techniques.length >= 2 ? techniques.slice(0, 5) : [];
+  }
+
   function renderResult(r, input) {
     const color = window.ScamLens.riskColor(r.risk_score);
+    const findings = explanationFindings(r.explanation);
+    const indicators = dnaIndicators(r);
+    const path = attackPath(r);
     const html = `
       <div id="result-root" class="space-y-6 fade-in">
-        <div class="card p-6 md:p-8 relative overflow-hidden">
+        <div class="card threat-profile p-6 md:p-8 relative overflow-hidden">
           <div class="hero-glow"></div>
-          <div class="relative flex flex-col md:flex-row items-center gap-6">
+          <div class="relative">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+              <div><div class="console-label">ScamLens threat profile</div><div class="text-xs mt-1" style="color:var(--muted)">Classification and evidence summary</div></div>
+              <span class="chip result-status" style="color:${color}; border-color:${color}55; background:${color}18">${escapeHtml(r.risk_level || 'Unknown')}</span>
+            </div>
+            <div class="threat-profile-grid">
             ${ring(r.risk_score, color)}
-            <div class="flex-1 text-center md:text-left">
-              <div class="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-2">
-                <span class="chip" style="color:${color}; border-color:${color}55; background:${color}18">${r.risk_level}</span>
-                <span class="chip chip-info">${r.scam_type}</span>
-                <span class="chip">Confidence ${r.confidence}%</span>
-                <span class="chip">Advice: ${r.recommendation}</span>
+            <div class="min-w-0">
+              <div class="flex flex-wrap gap-2 mb-3"><span class="chip chip-info">${escapeHtml(r.scam_type || 'Unknown')}</span><span class="chip">Confidence ${r.confidence}%</span></div>
+              <h2 class="text-2xl md:text-3xl font-bold mb-4">${escapeHtml(r.summary || '')}</h2>
+              <div class="profile-metrics">
+                <div><span>Threat level</span><strong style="color:${color}">${escapeHtml(r.risk_level || 'Unknown')}</strong></div>
+                <div><span>Confidence</span><strong>${r.confidence}%</strong></div>
+                <div><span>Recommendation</span><strong>${escapeHtml(r.recommendation || 'Review')}</strong></div>
               </div>
-              <h2 class="text-2xl md:text-3xl font-bold mb-2">${escapeHtml(r.summary || '')}</h2>
-              <p class="text-sm md:text-base" style="color:var(--muted)">${escapeHtml(r.explanation || '')}</p>
+            </div>
+            </div>
+            <div class="result-why mt-7 p-4 md:p-5">
+              <div class="console-label mb-3" style="color:var(--warning)">Why this was flagged / intelligence findings</div>
+              <div class="finding-list">${findings.length ? findings.map((finding, index) => `<div class="finding-row"><span>${String(index + 1).padStart(2, '0')}</span><p>${escapeHtml(finding)}</p></div>`).join('') : '<p class="text-sm" style="color:var(--muted)">No explanation was returned.</p>'}</div>
+            </div>
               <div class="mt-4 flex flex-wrap gap-2">
                 <button id="btn-pdf" class="btn btn-primary text-sm">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M5.625 1.5H9v3.75A2.25 2.25 0 0 0 11.25 7.5H15v9.75a2.25 2.25 0 0 1-2.25 2.25h-7.125A2.25 2.25 0 0 1 3.375 17.25V3.75A2.25 2.25 0 0 1 5.625 1.5z"/><path d="M10.5 1.5V5.25c0 .414.336.75.75.75H15L10.5 1.5z"/><path d="M18.375 12.75h-1.5A2.625 2.625 0 0 0 14.25 15.375v6H15.75V19.5h1.125a2.625 2.625 0 0 0 0-5.25.75.75 0 0 0 0-1.5z"/></svg>
@@ -172,15 +203,12 @@
         </div>
 
         <div class="grid md:grid-cols-2 gap-6">
-          <div class="card p-6">
-            <div class="flex items-center gap-2 mb-3">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#60A5FA" class="w-5 h-5"><path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5z"/></svg>
-              <h3 class="font-bold">Scam DNA™</h3>
-            </div>
-            <p class="text-xs mb-3" style="color:var(--muted)">Detected behaviors that make this dangerous</p>
-            <ul class="space-y-2">
-              ${(r.scam_dna||[]).map(x => `<li class="flex items-start gap-2 text-sm"><span class="mt-1 w-1.5 h-1.5 rounded-full" style="background:${color}"></span><span>${escapeHtml(x)}</span></li>`).join('')}
-            </ul>
+          <div class="card p-6 threat-dna-card">
+            <div class="flex items-center justify-between gap-3 mb-2"><div><div class="console-label">Behavior signature</div><h3 class="font-bold text-xl">Scam DNA™</h3></div><span class="chip chip-info">${indicators.length} signals</span></div>
+            <p class="text-xs mb-5" style="color:var(--muted)">Characteristics derived from detected techniques, flags, and behaviors</p>
+            <div class="dna-bars">${indicators.length ? indicators.map((item, index) => `<div class="dna-bar-row"><div class="flex justify-between gap-3 text-xs"><span>${escapeHtml(item.label)}</span><span class="dna-source">${item.source}</span></div><div class="dna-track"><i style="width:${Math.max(34, Math.min(96, r.risk_score - index * 4 + 20))}%;background:${color}"></i></div></div>`).join('') : '<span class="text-sm" style="color:var(--muted)">No behavior signals detected.</span>'}</div>
+            <div class="dna-summary"><div><span>Awareness</span><strong>${r.awareness_score}/100</strong></div><div><span>Confidence</span><strong>${r.confidence}/100</strong></div></div>
+            ${path.length ? `<div class="attack-path"><div class="console-label mb-2">Observed technique sequence</div><div class="path-flow">${path.map((step, index) => `<span>${escapeHtml(step)}</span>${index < path.length - 1 ? '<b>→</b>' : ''}`).join('')}</div></div>` : ''}
           </div>
 
           <div class="card p-6">

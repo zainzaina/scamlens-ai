@@ -9,7 +9,7 @@
   <meta property="og:description" content="AI-assisted risk analysis for suspicious messages, emails, screenshots and links." />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="theme-color" content="#3B82F6" />
+  <meta name="theme-color" content="#20C4C8" />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" href="logo.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="logo.svg" />
@@ -22,42 +22,77 @@
 
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- HERO -->
-    <section class="relative pt-16 pb-24 text-center overflow-hidden">
+    <section class="relative pt-10 pb-20 overflow-hidden">
       <div class="hero-glow"></div>
-      <div class="relative">
-        <div class="inline-flex items-center gap-2 chip chip-info mb-6">
-          <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-          Powered by Groq AI
-        </div>
-        <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.05]">
-          Stop Scams<br/><span class="grad-text">Before They Stop You.</span>
-        </h1>
-        <p class="mt-6 max-w-2xl mx-auto text-base sm:text-lg" style="color:var(--muted)">
-          Analyze suspicious messages, emails, screenshots and links using Artificial Intelligence. Get an instant risk score, red flags and educational insights.
-        </p>
-        <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <div class="hero-shell relative grid lg:grid-cols-[1.35fr_.65fr] overflow-hidden">
+        <div class="p-7 sm:p-12 md:p-16">
+          <div class="console-label mb-5">ScamLens / intelligence desk / online</div>
+          <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.05] max-w-3xl">
+            Stop Scams<br/><span class="grad-text">Before They Stop You.</span>
+          </h1>
+          <p class="mt-6 max-w-2xl text-base sm:text-lg" style="color:var(--muted)">
+            Analyze suspicious messages, emails, screenshots and links using Artificial Intelligence. Get an instant risk score, red flags and educational insights.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
           <a href="analyzer.html" class="btn btn-primary">Analyze Now
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M4.5 12a.75.75 0 0 1 .75-.75h11.69l-3.72-3.72a.75.75 0 1 1 1.06-1.06l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 1 1-1.06-1.06l3.72-3.72H5.25A.75.75 0 0 1 4.5 12z"/></svg>
           </a>
-          <a href="analyzer.html?demo=1" class="btn btn-ghost">Try Demo</a>
+            <a href="analyzer.html?demo=1" class="btn btn-ghost">Try Demo</a>
+          </div>
+          <div class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-xs" style="color:var(--muted)">
+            <span>LOCAL OCR</span><span>EXPLAINABLE RESULTS</span><span>NO ACCOUNT REQUIRED</span>
+          </div>
         </div>
+        <div class="hero-visual intel-grid p-7 sm:p-10 flex flex-col justify-between min-h-[300px]">
+          <div class="flex justify-between items-center">
+            <div><div class="console-label">Threat map</div><div class="text-xs mt-1" style="color:var(--muted)">Global signal simulation</div></div>
+            <span class="chip chip-warn"><span class="threat-status-dot"></span>Demo data</span>
+          </div>
+          <div class="threat-map" aria-label="Simulated global threat activity map">
+            <svg class="threat-map-lines" viewBox="0 0 520 190" role="img" aria-labelledby="map-title map-desc">
+              <title id="map-title">Simulated global threat activity</title>
+              <desc id="map-desc">A stylized world map showing simulated phishing, social engineering, and malicious link signals.</desc>
+              <g class="threat-map-land" aria-hidden="true">
+                <path d="M32 51 52 35l31 3 16 15-8 12 10 13-16 12-20-5-11 8-17-12-9-15Z"/>
+                <path d="m133 103 19-8 17 10 4 22-12 15-2 24-12 9-8-24-10-13 7-18Z"/>
+                <path d="m180 48 25-13 35 1 14 12 32-2 24 13 31-5 24 13 8 20-18 13-25-4-20 13-27-8-20 10-20-10-20 4-13-17-18-8 6-18Z"/>
+                <path d="m324 111 18-9 20 4 8 14 20-2 16 12-7 14-22 1-11 17-17-7-7-18-18-8Z"/>
+                <path d="m397 51 18-12 25 5 11 14-7 12 12 12-18 9-20-6-14-14Z"/>
+                <path d="m449 111 22-3 19 11-4 14-20 6-20-9Z"/>
+              </g>
+              <g class="threat-map-routes" aria-hidden="true">
+                <path d="M68 65 Q210 28 342 122"/><path d="M157 127 Q270 62 416 61"/><path d="M239 75 Q350 102 463 121"/>
+              </g>
+              <g class="threat-map-nodes" aria-hidden="true">
+                <circle class="threat-node" cx="68" cy="65" r="3"/><circle class="threat-node threat-node-hot" cx="157" cy="127" r="3"/>
+                <circle class="threat-node" cx="239" cy="75" r="3"/><circle class="threat-node" cx="292" cy="55" r="3"/>
+                <circle class="threat-node threat-node-hot" cx="342" cy="122" r="3"/><circle class="threat-node" cx="416" cy="61" r="3"/>
+                <circle class="threat-node" cx="463" cy="121" r="3"/><circle class="threat-node threat-node-hot" cx="198" cy="56" r="3"/>
+              </g>
+            </svg>
+            <div class="threat-map-legend"><span><i class="legend-dot"></i>Signal cluster</span><span><i class="legend-dot legend-dot-hot"></i>Elevated</span></div>
+          </div>
+          <div class="threat-stats" aria-label="Simulated threat activity statistics">
+            <div><span>Active signals</span><strong>24</strong></div><div><span>High risk</span><strong class="threat-stat-hot">07</strong></div><div><span>Patterns</span><strong>18</strong></div>
+          </div>
+        </div>
+      </div>
 
         <!-- Stats -->
-        <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
-          <div class="glass rounded-2xl p-6">
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-4xl mx-auto">
+          <div class="metric-card p-5">
             <div class="text-3xl font-bold grad-text">50,000+</div>
             <div class="text-sm mt-1" style="color:var(--muted)">Scams analyzed</div>
           </div>
-          <div class="glass rounded-2xl p-6">
+          <div class="metric-card p-5">
             <div class="text-3xl font-bold grad-text">&lt; 3s</div>
             <div class="text-sm mt-1" style="color:var(--muted)">Average detection time</div>
           </div>
-          <div class="glass rounded-2xl p-6">
+          <div class="metric-card p-5">
             <div class="text-3xl font-bold grad-text">10+</div>
             <div class="text-sm mt-1" style="color:var(--muted)">Supported scam types</div>
           </div>
         </div>
-      </div>
     </section>
 
     <!-- Feature cards -->
