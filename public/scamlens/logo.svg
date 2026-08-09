@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 100" role="img" aria-labelledby="title desc">
+  <title id="title">ScamLens AI</title>
+  <desc id="desc">ScamLens AI eye logo</desc>
+  <path d="M10 50 45 15l35 35-35 35Z" fill="none" stroke="#171936" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M80 15c35 0 55 35 70 35-15 0-35 35-70 35-20-18-20-52 0-70Z" fill="none" stroke="#16b7c5" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M45 15v70M65 25v50M95 25v50M115 35v30" fill="none" stroke="#171936" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="80" cy="50" r="20" fill="#171936"/>
+  <circle cx="91" cy="39" r="6" fill="#fff"/>
+</svg>

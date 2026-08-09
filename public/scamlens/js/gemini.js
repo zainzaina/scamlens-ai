@@ -15,7 +15,15 @@
       let msg = `Analysis failed (${res.status})`;
       try {
         const j = await res.json();
-        if (j && j.error) msg = j.error;
+        const error = j && j.error;
+        const errorText = typeof error === 'string' ? error : '';
+        if (res.status === 429 || /\b429\b/.test(errorText)) {
+          msg = 'Too many requests. Please wait a moment before trying again.';
+        } else if (error) {
+          msg = typeof error === 'string'
+            ? error
+            : error.message || error.detail || JSON.stringify(error);
+        }
       } catch {}
       throw new Error(msg);
     }

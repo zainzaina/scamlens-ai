@@ -43,9 +43,7 @@
       <header class="glass sticky top-0 z-40 border-b" style="border-color: var(--border)">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <a href="index.html" class="flex items-center gap-2">
-            <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,#3B82F6,#8B5CF6)">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7.5 3v6c0 4.97-3.36 8.94-7.5 9-4.14-.06-7.5-4.03-7.5-9V6L12 3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 12.75L11.25 14.25 14.75 10.75"/></svg>
-            </div>
+            <img src="logo.svg" alt="ScamLens AI" class="w-9 h-9 object-contain" />
             <span class="font-bold tracking-tight text-lg">ScamLens <span class="grad-text">AI</span></span>
           </a>
           <nav class="hidden md:flex items-center gap-1">
@@ -84,7 +82,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-4 gap-8">
           <div>
             <div class="flex items-center gap-2 mb-3">
-              <div class="w-8 h-8 rounded-lg" style="background:linear-gradient(135deg,#3B82F6,#8B5CF6)"></div>
+              <img src="logo.svg" alt="ScamLens AI" class="w-8 h-8 object-contain" />
               <span class="font-bold">ScamLens <span class="grad-text">AI</span></span>
             </div>
             <p class="text-sm" style="color:var(--muted)">AI-assisted scam & phishing risk analysis.</p>
