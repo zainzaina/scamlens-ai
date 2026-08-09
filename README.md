@@ -6,7 +6,8 @@
 
 Detect phishing messages, suspicious links, and online scams in seconds using Artificial Intelligence.
 
-<img src="https://media.giphy.com/media/LmNwrBhejkK9EFP504/giphy.gif" width="700"/>
+<img src="<img width="1828" height="862" alt="image" src="https://github.com/user-attachments/assets/3f2e676c-9a49-411d-a757-dae34a0e5ef9" />
+" width="700"/>
 
 [🌐 Live Demo]
 (https://scamlens-ai.vercel.app/scamlens/index.html)
