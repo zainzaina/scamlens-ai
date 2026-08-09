@@ -118,6 +118,26 @@ textarea:focus, input:focus, select:focus { outline: 2px solid rgba(59,130,246,.
 .tab.active { background: color-mix(in oklab, var(--primary) 15%, transparent); color: var(--primary); border-color: color-mix(in oklab, var(--primary) 45%, transparent); }
 
 .scroll-shadow { mask-image: linear-gradient(180deg, black 85%, transparent); }
+.pii-notice { margin-top:.85rem; padding:.65rem .8rem; border-left:3px solid var(--warning); background:color-mix(in oklab,var(--warning) 8%,var(--card)); color:var(--muted); font-size:.75rem; line-height:1.55; }
+
+.notice-locked { overflow:hidden; }
+.notice-backdrop { position:fixed; inset:0; z-index:100; display:flex; align-items:center; justify-content:center; padding:1rem; overflow-y:auto; background:rgba(3,10,16,.84); backdrop-filter:blur(8px); }
+.notice-dialog { width:min(100%, 720px); max-height:calc(100vh - 2rem); overflow:auto; padding:clamp(1.25rem, 4vw, 2rem); border-color:color-mix(in oklab, var(--primary) 38%, var(--border)); box-shadow:0 24px 80px rgba(0,0,0,.4); }
+.notice-header { display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; padding-bottom:1.1rem; border-bottom:1px solid var(--border); }
+.notice-countdown { display:grid; place-items:center; flex:0 0 auto; width:2.6rem; height:2.6rem; border:1px solid color-mix(in oklab, var(--primary) 45%, var(--border)); border-radius:50%; color:var(--primary); font:700 1rem ui-monospace, SFMono-Regular, Menlo, monospace; }
+.notice-copy { display:grid; gap:1.1rem; padding:1.2rem 0; color:var(--muted); font-size:.86rem; line-height:1.65; }
+.notice-copy h3 { margin:0 0 .5rem; color:var(--text); font-size:1rem; font-weight:700; }
+.notice-copy p { margin:.55rem 0 0; }
+.notice-copy strong { color:var(--text); }
+.notice-divider { height:1px; background:var(--border); }
+.notice-accept { width:100%; justify-content:center; opacity:.5; cursor:not-allowed; }
+.notice-accept:not(:disabled) { opacity:1; cursor:pointer; }
+
+@media (max-width: 520px) {
+  .notice-backdrop { align-items:flex-start; padding:.75rem; }
+  .notice-dialog { max-height:calc(100vh - 1.5rem); }
+  .notice-copy { font-size:.8rem; }
+}
 
 /* Heroicon fallback size */
 .icon { width: 1.25rem; height: 1.25rem; }

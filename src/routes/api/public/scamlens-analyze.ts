@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { redactPII } from '../../../lib/pii-redaction'
 
 const SYSTEM_PROMPT = `You are ScamLens AI, an expert cybersecurity analyst specialized in detecting scams, phishing, fraud and social engineering.
 Analyze the user-provided content (text message, email, URL, or screenshot content) and return a STRICT JSON object matching this schema. Do not include markdown fences, commentary, or extra text. Only JSON.
@@ -48,7 +49,9 @@ async function handlePost({ request }: { request: Request }) {
     })
   }
 
-  const { text, url } = body || {}
+  const { text: incomingText, url: incomingUrl } = body || {}
+  const text = incomingText ? redactPII(incomingText).text : undefined
+  const url = incomingUrl ? redactPII(incomingUrl).text : undefined
   if (!text && !url) {
     return new Response(JSON.stringify({ error: 'EMPTY_INPUT' }), {
       status: 400,
@@ -79,6 +82,7 @@ async function handlePost({ request }: { request: Request }) {
     headers: {
       'content-type': 'application/json',
       authorization: `Bearer ${apiKey}`,
+      'x-groq-data-privacy': 'zdr',
     },
     body: JSON.stringify(groqBody),
   })

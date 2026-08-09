@@ -99,8 +99,8 @@
             <div class="font-semibold mb-2 text-sm">Company</div>
             <ul class="space-y-1 text-sm" style="color:var(--muted)">
               <li><a class="hover:text-white" href="about.html">About</a></li>
-              <li><a class="hover:text-white" href="privacy.html">Privacy</a></li>
-              <li><a class="hover:text-white" href="terms.html">Terms</a></li>
+              <li><a class="hover:text-white" href="privacy.html">Privacy Policy / سياسة الخصوصية</a></li>
+              <li><a class="hover:text-white" href="terms.html">Terms of Use / شروط الاستخدام</a></li>
             </ul>
           </div>
           <div>

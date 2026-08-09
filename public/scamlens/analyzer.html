@@ -67,13 +67,54 @@
           Analyze
         </button>
       </div>
+      <p id="pii-notice" class="pii-notice hidden" role="status" aria-live="polite">
+        تمت إزالة بعض المعلومات الشخصية أو الحساسة من النص قبل التحليل.<br />
+        Some personal or sensitive information was removed before analysis.
+      </p>
     </div>
 
     <div id="result" class="mt-8"></div>
   </main>
 
+  <div id="notice-modal" class="notice-backdrop" role="dialog" aria-modal="true" aria-labelledby="notice-title">
+    <section class="notice-dialog card" role="document">
+      <div class="notice-header">
+        <div>
+          <div class="console-label mb-2">Privacy &amp; Terms of Use</div>
+          <h2 id="notice-title" class="text-2xl md:text-3xl font-bold">Important Notice</h2>
+        </div>
+        <div id="notice-countdown" class="notice-countdown" aria-live="polite">8</div>
+      </div>
+
+      <div class="notice-copy">
+        <div dir="rtl" lang="ar">
+          <h3>تنبيه مهم — اقرأ قبل المتابعة</h3>
+          <p>ScamLens مخصص لتحليل الرسائل والروابط المشبوهة لأغراض التوعية والأمن السيبراني.</p>
+          <p><strong>يمنع إدخال كلمات المرور أو أرقام البطاقات أو الحسابات البنكية أو أرقام الهوية أو أي معلومات شخصية أو حساسة.</strong></p>
+          <p>المحتوى الذي ترسله للتحليل قد تتم معالجته بواسطة خدمة ذكاء اصطناعي خارجية مستخدمة في ScamLens.</p>
+          <p>أنت مسؤول عن المحتوى الذي ترسله وعن استخدامك للخدمة. <strong>أي استخدام مخالف لشروط الاستخدام أو إساءة استخدام للأداة يقع على مسؤولية المستخدم ولا يمثل ScamLens.</strong></p>
+          <p>باستخدامك للأداة فإنك تقر بأنك قرأت هذا التنبيه وتوافق على شروط الاستخدام.</p>
+        </div>
+        <div class="notice-divider" aria-hidden="true"></div>
+        <div lang="en">
+          <h3>Important Notice — Read Before Continuing</h3>
+          <p>ScamLens is designed to analyze suspicious messages and links for cybersecurity awareness and analysis purposes.</p>
+          <p><strong>Do not enter passwords, payment card numbers, bank account details, national ID numbers, or any personal or sensitive information.</strong></p>
+          <p>Content submitted for analysis may be processed by an external AI service used by ScamLens.</p>
+          <p>You are responsible for the content you submit and your use of the service. <strong>Any misuse or violation of the Terms of Use is the user's responsibility and does not represent ScamLens.</strong></p>
+          <p>By using the tool, you acknowledge that you have read this notice and agree to the Terms of Use.</p>
+        </div>
+      </div>
+
+      <button id="notice-accept" class="btn btn-primary notice-accept" type="button" disabled>
+        أوافق وأتابع / I Understand &amp; Continue
+      </button>
+    </section>
+  </div>
+
   <div id="site-footer"></div>
   <script src="js/app.js"></script>
+  <script src="js/pii-redaction.js"></script>
   <script src="js/gemini.js"></script>
   <script src="js/report.js"></script>
   <script src="js/analyzer.js"></script>

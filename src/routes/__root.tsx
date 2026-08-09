@@ -80,6 +80,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "ScamLens AI by Zain Abuzaid | Cybersecurity Analysis" },
       { name: "description", content: "ScamLens AI by Zain Abuzaid provides AI-assisted cybersecurity analysis for scams, phishing and social engineering." },
       { name: "author", content: "Zain Abuzaid" },
+      {
+        name: "google-site-verification",
+        content: "HuwDvfRh1WbZTPWZY6ms7015rRpE3_4GckPl_2Sa5wM",
+      },
       { property: "og:title", content: "ScamLens AI by Zain Abuzaid | Cybersecurity Analysis" },
       { property: "og:description", content: "AI-assisted cybersecurity analysis by Zain Abuzaid." },
       { property: "og:type", content: "website" },

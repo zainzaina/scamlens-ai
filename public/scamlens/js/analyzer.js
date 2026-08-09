@@ -1,24 +1,66 @@
 // Analyzer page logic
 (function () {
   const HIST_KEY = 'scamlens.history';
+  const NOTICE_KEY = 'scamlens.noticeAcknowledged';
+
+  function hasAcknowledgedNotice() {
+    try {
+      return sessionStorage.getItem(NOTICE_KEY) === 'true';
+    } catch {
+      return false;
+    }
+  }
+
+  function acknowledgeNotice() {
+    try {
+      sessionStorage.setItem(NOTICE_KEY, 'true');
+    } catch {
+      // Keep the notice active if session storage is unavailable.
+      return false;
+    }
+    return true;
+  }
+
+  function initializeNotice() {
+    const modal = document.getElementById('notice-modal');
+    const countdown = document.getElementById('notice-countdown');
+    const accept = document.getElementById('notice-accept');
+    if (!modal || !countdown || !accept) return;
+
+    if (hasAcknowledgedNotice()) {
+      modal.remove();
+      return;
+    }
+
+    const protectedControls = document.querySelectorAll('main button, main input, main textarea');
+    protectedControls.forEach(control => { control.disabled = true; });
+    document.body.classList.add('notice-locked');
+    let remaining = 8;
+    const timer = window.setInterval(() => {
+      remaining -= 1;
+      countdown.textContent = String(remaining);
+      if (remaining <= 0) {
+        window.clearInterval(timer);
+        countdown.textContent = '✓';
+        accept.disabled = false;
+        accept.focus();
+      }
+    }, 1000);
+
+    accept.addEventListener('click', () => {
+      if (accept.disabled || !acknowledgeNotice()) return;
+      window.clearInterval(timer);
+      modal.remove();
+      document.body.classList.remove('notice-locked');
+      protectedControls.forEach(control => { control.disabled = false; });
+      document.getElementById('btn-analyze')?.focus();
+    });
+  }
 
   function saveHistory(entry) {
     const list = JSON.parse(localStorage.getItem(HIST_KEY) || '[]');
     list.unshift(entry);
     localStorage.setItem(HIST_KEY, JSON.stringify(list.slice(0, 100)));
-  }
-
-  function fileToBase64(file) {
-    return new Promise((resolve, reject) => {
-      const r = new FileReader();
-      r.onload = () => {
-        const s = String(r.result);
-        const comma = s.indexOf(',');
-        resolve({ base64: s.slice(comma + 1), mime: file.type || 'image/png', dataUrl: s });
-      };
-      r.onerror = reject;
-      r.readAsDataURL(file);
-    });
   }
 
   let activeTab = 'text';
@@ -317,27 +359,35 @@
 
   async function runAnalysis() {
     const resultEl = document.getElementById('result');
+    const piiNotice = document.getElementById('pii-notice');
     resultEl.innerHTML = skeleton();
+    piiNotice?.classList.add('hidden');
 
     const payload = {};
     let inputSummary = '';
-    let thumbUrl = null;
     try {
       if (activeTab === 'text') {
-        payload.text = document.getElementById('in-text').value.trim();
-        if (!payload.text) throw new Error('Please paste a message to analyze.');
-        inputSummary = payload.text.slice(0, 200);
+        const originalText = document.getElementById('in-text').value.trim();
+        if (!originalText) throw new Error('Please paste a message to analyze.');
+        const sanitized = window.ScamLens.redactPII(originalText);
+        payload.text = sanitized.text;
+        inputSummary = sanitized.text.slice(0, 200);
+        if (sanitized.changed) piiNotice?.classList.remove('hidden');
       } else if (activeTab === 'url') {
-        payload.url = document.getElementById('in-url').value.trim();
-        if (!payload.url) throw new Error('Please paste a URL to analyze.');
-        inputSummary = payload.url;
+        const originalUrl = document.getElementById('in-url').value.trim();
+        if (!originalUrl) throw new Error('Please paste a URL to analyze.');
+        const sanitized = window.ScamLens.redactPII(originalUrl);
+        payload.url = sanitized.text;
+        inputSummary = sanitized.text;
+        if (sanitized.changed) piiNotice?.classList.remove('hidden');
       } else {
         if (!selectedFile) throw new Error('Please select a screenshot.');
         const { text: extractedText } = await extractTextFromImage(selectedFile);
         if (!extractedText) throw new Error('No readable text detected in this image.');
-        payload.text = extractedText;
+        const sanitized = window.ScamLens.redactPII(extractedText);
+        payload.text = sanitized.text;
         inputSummary = `[Screenshot] ${selectedFile.name}`;
-        thumbUrl = await fileToBase64(selectedFile).then(({ dataUrl }) => dataUrl);
+        if (sanitized.changed) piiNotice?.classList.remove('hidden');
       }
 
       const result = await window.ScamLens.analyze(payload);
@@ -347,7 +397,6 @@
         date: new Date().toISOString(),
         input: inputSummary,
         kind: activeTab,
-        thumb: thumbUrl,
         result
       });
     } catch (e) {
@@ -369,6 +418,7 @@ Enter your username, password and OTP code to confirm your identity.
   }
 
   document.addEventListener('DOMContentLoaded', () => {
+    initializeNotice();
     document.querySelectorAll('[data-tab]').forEach(el => el.addEventListener('click', () => switchTab(el.dataset.tab)));
     document.getElementById('btn-analyze').addEventListener('click', runAnalysis);
     document.getElementById('btn-demo').addEventListener('click', loadDemo);

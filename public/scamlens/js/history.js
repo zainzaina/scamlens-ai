@@ -1,7 +1,14 @@
 // History page
 (function () {
   const HIST_KEY = 'scamlens.history';
-  function load() { return JSON.parse(localStorage.getItem(HIST_KEY) || '[]'); }
+  function load() {
+    const list = JSON.parse(localStorage.getItem(HIST_KEY) || '[]');
+    const sanitized = list.map(({ thumb, ...entry }) => entry);
+    if (list.some(entry => Object.prototype.hasOwnProperty.call(entry, 'thumb'))) {
+      localStorage.setItem(HIST_KEY, JSON.stringify(sanitized));
+    }
+    return sanitized;
+  }
   function save(l) { localStorage.setItem(HIST_KEY, JSON.stringify(l)); }
   function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 

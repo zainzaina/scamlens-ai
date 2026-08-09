@@ -9,6 +9,7 @@
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
+    "test:pii": "node --test tests/pii-redaction.test.mjs",
     "format": "prettier --write ."
   },
   "dependencies": {
